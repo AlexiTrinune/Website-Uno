@@ -61,6 +61,8 @@ h2 {
 }
 
 .project-slide {
+    grid-column: 2;
+    grid-row: 1;
     min-height: 200px;
 }
 

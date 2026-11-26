@@ -1,6 +1,10 @@
 # Website Uno
 
-A simple multi-page portfolio website showcasing Alexi Trinune's development projects.
+A simple multi-page portfolio website showcasing development projects.
+
+## Live Website
+
+[View the website](https://alexitrinune.github.io/Website-Uno/)
 
 ## Pages
 
