@@ -138,6 +138,38 @@ h2 {
     box-shadow: 0 10px 24px rgba(23, 32, 51, 0.2);
 }
 
+.github-link {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    border-radius: 50%;
+    color: white;
+    background: #172033;
+    box-shadow: 0 10px 24px rgba(23, 32, 51, 0.2);
+    vertical-align: middle;
+    transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.github-link svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.github-link:hover {
+    transform: translateY(-2px);
+    background: #30394a;
+    box-shadow: 0 14px 28px rgba(23, 32, 51, 0.28);
+}
+
+.github-link:focus-visible {
+    outline: 3px solid rgba(91, 103, 216, 0.35);
+    outline-offset: 4px;
+}
+
 @media (max-width: 560px) {
     .page-card,
     .portfolio-card {
