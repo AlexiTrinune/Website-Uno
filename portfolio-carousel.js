@@ -11,24 +11,22 @@ function showSlide(index) {
         return;
     }
 
+    slides.forEach((slide, slideIndex) => {
+        slide.getAnimations().forEach((animation) => animation.cancel());
+        const isCurrent = slideIndex === currentSlide;
+        slide.hidden = !isCurrent;
+        slide.classList.toggle("active", isCurrent);
+    });
+
     const outgoingSlide = slides[currentSlide];
     const incomingSlide = slides[nextSlide];
     const direction = nextSlide > currentSlide || (currentSlide === slides.length - 1 && nextSlide === 0) ? 1 : -1;
     const thisTransition = ++transitionId;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    outgoingSlide.classList.remove("active");
     incomingSlide.hidden = false;
     incomingSlide.classList.add("active");
     currentSlide = nextSlide;
-
-    slides.forEach((slide, slideIndex) => {
-        const isActive = slideIndex === currentSlide;
-        if (slide !== incomingSlide) {
-            slide.hidden = !isActive;
-            slide.classList.toggle("active", isActive);
-        }
-    });
 
     dots.forEach((dot, dotIndex) => {
         dot.classList.toggle("active", dotIndex === currentSlide);
@@ -41,29 +39,30 @@ function showSlide(index) {
         return;
     }
 
-    const duration = 240;
+    const duration = 450;
     outgoingSlide.animate(
         [
             { opacity: 1, transform: "translateX(0)" },
-            { opacity: 0, transform: `translateX(${-24 * direction}px)` }
+            { opacity: 0, transform: `translateX(${-40 * direction}px)` }
         ],
         { duration, easing: "ease-in", fill: "forwards" }
     );
 
-    incomingSlide.animate(
+    const incomingAnimation = incomingSlide.animate(
         [
-            { opacity: 0, transform: `translateX(${24 * direction}px)` },
+            { opacity: 0, transform: `translateX(${40 * direction}px)` },
             { opacity: 1, transform: "translateX(0)" }
         ],
         { duration, easing: "ease-out", fill: "forwards" }
-    ).finished.then(() => {
+    );
+    incomingAnimation.onfinish = () => {
         if (thisTransition !== transitionId) {
             return;
         }
 
         outgoingSlide.hidden = true;
         outgoingSlide.classList.remove("active");
-    }).catch(() => {});
+    };
 }
 
 previousButton.addEventListener("click", () => showSlide(currentSlide - 1));
