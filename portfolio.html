@@ -7,14 +7,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="page-card">
-        <p class="eyebrow">My Portfolio</p>
-        <h1>Projects</h1>
-        <p class="description">One of my projects is YTDL.</p>
-        <div class="actions">
-            <a class="button" href="https://github.com/AlexiTrinune/YTDL" target="_blank" rel="noopener noreferrer">View YTDL</a>
-            <a class="button button-secondary" href="index.html">Back</a>
+    <main class="page-card portfolio-card">
+        <p class="eyebrow">Selected Work</p>
+        <h1>Portfolio</h1>
+
+        <section class="carousel" aria-label="Project links">
+            <button class="carousel-arrow" id="previousProject" type="button" aria-label="Previous project">&#8592;</button>
+
+            <article class="project-slide active" data-project="0">
+                <h2>YTDL</h2>
+                <p class="description">A YouTube download project for saving and managing media from the web.</p>
+                <a class="button" href="https://github.com/AlexiTrinune/YTDL" target="_blank" rel="noopener noreferrer">View YTDL</a>
+            </article>
+
+            <article class="project-slide" data-project="1" hidden>
+                <h2>Im Bored</h2>
+                <p class="description">A creative project built for choosing ideas and breaking up boredom.</p>
+                <a class="button" href="https://github.com/AlexiTrinune/ImBoredSoIMadeThis" target="_blank" rel="noopener noreferrer">View Project</a>
+            </article>
+
+            <button class="carousel-arrow" id="nextProject" type="button" aria-label="Next project">&#8594;</button>
+        </section>
+
+        <div class="carousel-dots" aria-label="Choose a project">
+            <button class="carousel-dot active" type="button" data-slide="0" aria-label="Show YTDL"></button>
+            <button class="carousel-dot" type="button" data-slide="1" aria-label="Show Im Bored"></button>
         </div>
+
+        <a class="button button-secondary back-button" href="index.html">Back to Main</a>
     </main>
+
+    <script src="portfolio-carousel.js"></script>
 </body>
 </html>
